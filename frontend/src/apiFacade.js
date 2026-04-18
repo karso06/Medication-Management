@@ -1,5 +1,6 @@
 const USER_SERVICE_URL = import.meta.env.VITE_USER_SERVICE_URL || "";
-const MEDICATION_SERVICE_URL = import.meta.env.VITE_MEDICATION_SERVICE_URL || "";
+const MEDICATION_SERVICE_URL =
+  import.meta.env.VITE_MEDICATION_SERVICE_URL || "";
 const NOTIFICATION_SERVICE_URL =
   import.meta.env.VITE_NOTIFICATION_SERVICE_URL || "";
 
