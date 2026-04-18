@@ -6,8 +6,14 @@ let memoryServer;
 const connectDb = async () => {
   const mongoUri = process.env.MONGODB_URI;
   let uriToUse = mongoUri;
+  const isProduction = process.env.NODE_ENV === "production";
 
   if (!uriToUse) {
+    if (isProduction) {
+      throw new Error(
+        "MONGODB_URI is required in production. Configure it in Render environment variables.",
+      );
+    }
     memoryServer = await MongoMemoryServer.create();
     uriToUse = memoryServer.getUri();
     console.log("Notification Service running with in-memory MongoDB");
