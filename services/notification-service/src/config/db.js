@@ -1,0 +1,25 @@
+const mongoose = require("mongoose");
+const { MongoMemoryServer } = require("mongodb-memory-server");
+
+let memoryServer;
+
+const connectDb = async () => {
+  const mongoUri = process.env.MONGODB_URI;
+  let uriToUse = mongoUri;
+
+  if (!uriToUse) {
+    memoryServer = await MongoMemoryServer.create();
+    uriToUse = memoryServer.getUri();
+    console.log("Notification Service running with in-memory MongoDB");
+  }
+
+  await mongoose.connect(uriToUse, {
+    dbName:
+      process.env.MONGODB_DB_NAME ||
+      process.env.MONGODB_DB ||
+      "medication_notification_service",
+  });
+  console.log("Notification Service connected to MongoDB");
+};
+
+module.exports = { connectDb };

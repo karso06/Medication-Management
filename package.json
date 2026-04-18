@@ -1,0 +1,14 @@
+{
+  "name": "medication-management-workspace",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Workspace scripts for local development",
+  "scripts": {
+    "dev": "npm --prefix frontend run dev -- --host 127.0.0.1 --port 5173",
+    "dev:services": "concurrently -k -n user,medication,notification -c blue,green,magenta \"npm --prefix services/user-service run dev\" \"npm --prefix services/medication-service run dev\" \"npm --prefix services/notification-service run dev\"",
+    "dev:all": "concurrently -k -n user,medication,notification,frontend -c blue,green,magenta,cyan \"npm --prefix services/user-service run dev\" \"npm --prefix services/medication-service run dev\" \"npm --prefix services/notification-service run dev\" \"npm --prefix frontend run dev -- --host 127.0.0.1 --port 5173\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
