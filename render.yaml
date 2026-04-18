@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: medication-user-service
+    env: node
+    rootDir: services/user-service
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB_NAME
+        value: medication_user_service
+
+  - type: web
+    name: medication-notification-service
+    env: node
+    rootDir: services/notification-service
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB_NAME
+        value: medication_notification_service
+
+  - type: web
+    name: medication-medication-service
+    env: node
+    rootDir: services/medication-service
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    autoDeploy: true
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: MONGODB_DB_NAME
+        value: medication_service
+      - key: USER_SERVICE_URL
+        sync: false
+      - key: NOTIFICATION_SERVICE_URL
+        sync: false
