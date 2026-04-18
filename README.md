@@ -110,7 +110,7 @@ Inicia cada uno:
 - Notification Service: `npm run dev` (puerto 4003)
 - Frontend: `npm run dev` (puerto 5173)
 
-## Despliegue en producción (sin localhost)
+## Despliegue en producción (URLs públicas)
 
 ## A. Backend en Render
 
